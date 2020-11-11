@@ -15,23 +15,23 @@ const imgList = ['uid1','uid2','uid3','uid4','uid5','uid6','uid7','uid8','uid9']
 export const ElasticCarousel = () => {
     
     const [trailer, setTrailer] = useState(false);
-
-    useEffect(() => {
+    
+    // useEffect(() => {
         
-    }, [trailer])
+    // }, [trailer])
 
     const handleTrailer = () => {
         setTrailer(!trailer);
     }
 
     const handleClosePopup = () => {
-        
+        setTrailer(!trailer);
     }
 
     return (
         <>
             {
-                trailer && <Trailer />
+                trailer && <Trailer handleClosePopup={handleClosePopup} />
             }
             <div className="carousel_component">
                 <div className="carousel_component-sub">

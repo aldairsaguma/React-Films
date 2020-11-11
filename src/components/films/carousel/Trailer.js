@@ -1,11 +1,14 @@
 import React from 'react'
 import YouTube from 'react-youtube';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
+
 
 /** Styles **/
 import './scss/__trailer.scss';
 
 
-export const Trailer = () => {
+export const Trailer = ({handleClosePopup}) => {
 
     const opts = {
         height: '671',
@@ -17,18 +20,21 @@ export const Trailer = () => {
     };
 
     return (
-        /** 
-            Autoplay
-            rel=0&amp;autoplay=1  
-        **/ 
         <div className="trailer__container">
             <div className="trailer-center">
+                <div className="close-popup" onClick={handleClosePopup}>
+                    <FontAwesomeIcon icon="times" title="Close" />
+                </div>
                 <YouTube 
                     videoId="Qxfqpe3IG7o" 
                     opts={opts} 
-                    // onReady={ e => e.target.mute()} 
+                    onReady={ e => e.target.mute()} 
                     />;
             </div>
         </div>
     )
+}
+
+Trailer.propTypes = {
+    handleClosePopup : PropTypes.func.isRequired
 }

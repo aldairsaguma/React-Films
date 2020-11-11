@@ -1,15 +1,33 @@
+$white: #ffffff;
+$black : #000000;
+
 .trailer__container{
     bottom: 0;
     left: 0;
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: background-color .4s;
     z-index: 4;
     .trailer-center{
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        max-height: 671px;
+        max-width: 1196px;
+        background-color: $black;
+        .close-popup{
+            bottom: auto;
+            color: $white;
+            cursor: pointer;
+            font-size: 30px;
+            left: auto;
+            right: 15px;
+            position: absolute;
+            top: -50px;
+            transition: ease .4s;
+        }
     }
 }

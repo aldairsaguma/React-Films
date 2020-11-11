@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 /** Styles **/
 import './scss/__carousel.scss';
@@ -7,7 +8,6 @@ import './scss/__carousel.scss';
 import { data } from './data';
 
 export const Item = ({img, handleTrailer}) => {
-    // console.log(handleTrailer);
     return (
         <div className="carousel__images-body">
 
@@ -53,4 +53,9 @@ export const Item = ({img, handleTrailer}) => {
             }
         </div>
     )
+}
+
+Item.propTypes = {
+    img : PropTypes.string.isRequired,
+    handleTrailer : PropTypes.func.isRequired
 }

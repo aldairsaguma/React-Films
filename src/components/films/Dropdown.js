@@ -48,7 +48,7 @@ export const Dropdown = () => {
                     className="btn-login"
                     onClick={handleDropdown}
                     >
-                    <FontAwesomeIcon icon="user" />
+                    <FontAwesomeIcon icon="user"/>
                     { ' ' }
                     <span className="icon-login">
                         {`Login`}
