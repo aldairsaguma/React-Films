@@ -1,0 +1,15 @@
+@import './base/_variables';
+
+/*Fuentes*/
+@import './fonts/_fonts';
+
+/** Font Awesome **/
+@import './fontawesome/scss/fontawesome.scss';
+@import './fontawesome/scss/solid.scss';
+
+/*Components*/
+@import './base/_general';
+@import './components/_films';
+@import './components/_toggle';
+@import './components/_dropdown';
+@import './components/_auth';

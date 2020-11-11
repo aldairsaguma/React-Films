@@ -1,0 +1,113 @@
+.dark-mode-content{
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    flex-flow: row wrap; 
+    .title{
+        color: $title;
+        font-family: $OpenSansSemi;
+        font-size: .9rem;
+    }
+    .caja-1{
+        margin-right: 5px;
+    }
+    .caja-2{
+        margin-left: 5px;
+    }
+    .dark-mode{
+        border-radius: 15px;
+        background-color: $bgDarkMode;
+        cursor: pointer;
+        display: flex;
+        flex-flow: row wrap;
+        position: relative;
+        width: 50px;
+        height: 24px;
+        .icon-mode-sun{
+            bottom: 0;
+            height: 10px;
+            right: 11px;
+            top: 0;
+            position: absolute;
+            margin-bottom: auto;
+            margin-top: auto;
+            width: 10px;
+           span{
+                align-items: center;
+                display: flex;
+                height: 10px;
+                position: relative;
+                width: 10px;
+            &::before{
+                content: '';
+                background: url('/assets/svg/sun.svg') no-repeat;
+                display: flex;
+                height: 20px;
+                width: 20px;
+                position: absolute;
+            }
+           }
+        }
+        .icon-mode-moon{
+            bottom: 0;
+            height: 10px;
+            line-height: 0;
+            left: 2px;
+            opacity: 0;
+            top: 0;
+            position: absolute;
+            margin-bottom: auto;
+            margin-top: auto;
+            width: 10px;
+            
+            span{
+                align-items: center;
+                display: flex;
+                height: 10px;
+                position: relative;
+                width: 10px;
+                &::before{
+                    content: '';
+                    background: url('/assets/svg/moon.svg') no-repeat;
+                    display: block;
+                    height: 20px;
+                    transition: all .25 ease;
+                    width: 20px;
+                    position: absolute;
+                }
+            }
+        }
+        .icon-mode-thumb{
+            background-color: #f4f4f4;
+            border-radius: 50%;
+            border: 1px solid #4d4d4d;
+            height: 22px;
+            position: absolute;
+            top: 1px;
+            transition: all .25s ease;
+            -webkit-transition: all .25s ease;
+            left: 1px;
+            width: 22px;
+            &:hover{
+                box-shadow: 0 0 2px 3px #0099e0;
+            }
+        }
+        
+    }
+    
+    .dark-mode-active{
+        .icon-mode-thumb{
+            left: 28px;
+        }
+        .icon-mode-moon{
+            opacity: 1;
+        }
+        .icon-mode-sun{
+            opacity: 0;
+        }
+    }
+    
+    .icon-mode-thumb-focus{
+        box-shadow: 0 0 2px 3px #0099e0;
+    }
+}

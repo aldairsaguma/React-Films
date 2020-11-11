@@ -1,0 +1,13 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    height: 100vh;
+    .body{
+        flex: 1 0 auto;
+    }
+    .body-wrapper{
+        max-width: 1600px;
+        margin: auto;
+    }
+}

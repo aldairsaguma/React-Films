@@ -1,0 +1,26 @@
+.dropdown__user-dropdown{
+    >div{
+        position: relative;
+    }
+    .title{
+        color: $title;
+        font-family: $OpenSansRegular;
+    }
+    .btn-login{
+        background-color: $logo;
+        border-radius: 5px;
+        border: none;
+        color: $white;
+        display: inline-block;
+        font-size: 1rem;
+        outline: none;
+        padding: 0 20px;
+        height: 35px;
+        &:hover{
+            background-color: darken($color: $logo, $amount: 10);
+        }
+        .icon-login{
+            font-family: $OpenSansBold;
+        }   
+    }
+}
