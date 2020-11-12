@@ -81,3 +81,21 @@
 
 }
 
+/** Carousel **/
+.carousel__images-body{
+    .text-bottom{
+        .title{
+            font-family: $OpenSansSemi;
+            font-size: 1.2rem;
+        }
+        .description-movie{
+            span{
+                font-family: $OpenSansRegular;
+                font-size: .95rem;
+            }
+        }
+        .watch-movie-or-trailer{
+            font-family: $OpenSansRegular;
+        }
+    }
+}

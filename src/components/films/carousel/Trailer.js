@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import './scss/__trailer.scss';
 
 
-export const Trailer = ({handleClosePopup}) => {
+export const Trailer = ({handleClosePopup,idYoutube}) => {
 
     const opts = {
         height: '671',
@@ -26,7 +26,7 @@ export const Trailer = ({handleClosePopup}) => {
                     <FontAwesomeIcon icon="times" title="Close" />
                 </div>
                 <YouTube 
-                    videoId="Qxfqpe3IG7o" 
+                    videoId={idYoutube} 
                     opts={opts} 
                     onReady={ e => e.target.mute()} 
                     />;
@@ -36,5 +36,6 @@ export const Trailer = ({handleClosePopup}) => {
 }
 
 Trailer.propTypes = {
-    handleClosePopup : PropTypes.func.isRequired
+    handleClosePopup : PropTypes.func.isRequired,
+    idYoutube : PropTypes.string.isRequired
 }

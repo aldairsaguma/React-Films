@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 /** Styles **/
 import './scss/__carousel.scss';
 
 /** Data **/
 import { data } from './data';
+
 
 export const Item = ({img, handleTrailer}) => {
     return (
@@ -28,18 +29,28 @@ export const Item = ({img, handleTrailer}) => {
                                     <div className="text-bottom">
                                         <div>   
                                             <div className="title">{`${res.title}`}</div>
-                                            <div>
+                                            <div className="description-movie">
                                                 <i>{`${res.duration} - `}</i>
                                                 <span>{`${res.description}`}</span>
                                             </div>
                                             <div className="watch-movie-or-trailer">
-                                                <div>Película</div>
+                                                <div>
+                                                    <button
+                                                        className="watch-movie"
+                                                    >
+                                                        <FontAwesomeIcon icon="play" />
+                                                        {` VER PELÍCULA`}
+                                                    </button>
+                                                </div>
                                                 <div>
                                                     <button 
                                                         className="watch-trailer"
-                                                        onClick={handleTrailer}
+                                                        onClick={
+                                                            () => handleTrailer(res.trailer)
+                                                        }
                                                         >
-                                                        Trailer
+                                                        <FontAwesomeIcon icon={['fab','youtube']} />
+                                                        {` TRAILER`}
                                                     </button>
                                                 </div>
                                             </div>
