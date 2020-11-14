@@ -8,7 +8,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { Account } from '../auth/Account';
 
-export const Dropdown = () => {
+const Dropdown = () => {
 
     const [{active}, setLogin] = useState({
         active: false
@@ -36,32 +36,67 @@ export const Dropdown = () => {
 
     return (
         <li className="dropdown__user-dropdown">
-            <OutsideClickHandler 
-                onOutsideClick={ () => {
-                    setLogin({
-                        active: false
-                    });
-                }} 
-            >
-                <button
-                    id="btn-login" 
-                    className="btn-login"
-                    onClick={handleDropdown}
+
+            {
+                (active)?
+                (   
+                    // OutsideClickHandler -> actua cómo un div
+                    <OutsideClickHandler 
+                        onOutsideClick={ () => {
+                            setLogin({
+                                active: false
+                            });
+                        }} 
                     >
-                    <FontAwesomeIcon icon="user"/>
-                    { ' ' }
-                    <span className="icon-login">
-                        {`Login`}
-                        {/* {`Perfil`} */}
-                    </span>
-                </button>
-                <div className="auth__dropdown-box">
-                    {
-                        active && <Login /> 
-                        // active && <Account />
-                    }         
-                </div>
-            </OutsideClickHandler>
+                        <button
+                            id="btn-login" 
+                            className="btn-login"
+                            onClick={handleDropdown}
+                            >
+                            <FontAwesomeIcon icon="user"/>
+                            { ' ' }
+                            <span className="icon-login">
+                                {`Login`}
+                                {/* {`Perfil`} */}
+                            </span>
+                        </button>
+                        <div className="auth__dropdown-box">
+                            {
+                                active && <Login /> 
+                                // active && <Account />
+                            }         
+                        </div>
+                    </OutsideClickHandler>
+
+                )
+                :
+                (
+                    <div>
+                        <button
+                            id="btn-login" 
+                            className="btn-login"
+                            onClick={handleDropdown}
+                            >
+                            <FontAwesomeIcon icon="user"/>
+                            { ' ' }
+                            <span className="icon-login">
+                                {`Login`}
+                                {/* {`Perfil`} */}
+                            </span>
+                        </button>
+                        <div className="auth__dropdown-box">
+                            {
+                                active && <Login /> 
+                                // active && <Account />
+                            }         
+                        </div>
+                    </div>
+                )  
+            }
+
+
         </li>
     )
-}
+};
+
+export default React.memo(Dropdown);

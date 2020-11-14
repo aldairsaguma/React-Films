@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Dropdown } from './Dropdown';
-import { Toggle } from './Toggle';
+import Dropdown  from './Dropdown';
+import Toggle from './darkMode/Toggle';
 
 export const NavBar = () => {
 

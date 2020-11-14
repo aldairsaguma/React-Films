@@ -84,8 +84,8 @@
             height: 22px;
             position: absolute;
             top: 1px;
-            transition: all .25s ease;
-            -webkit-transition: all .25s ease;
+            transition: .25s ease;
+            -webkit-transition: .25s ease;
             left: 1px;
             width: 22px;
             &:hover{
@@ -96,6 +96,7 @@
     }
     
     .dark-mode-active{
+        animation-delay: 2s;
         .icon-mode-thumb{
             left: 28px;
         }

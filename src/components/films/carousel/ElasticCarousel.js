@@ -13,17 +13,13 @@ import { Trailer } from './Trailer';
 const imgList = ['uid1','uid2','uid3','uid4','uid5','uid6','uid7','uid8','uid9'];
 
 export const ElasticCarousel = () => {
-    
+
     const [trailer, setTrailer] = useState({
         popupState : false,
         idYoutube : ''
     });
     
     const { popupState,idYoutube } = trailer;
-
-    // useEffect(() => {
-        
-    // }, [trailer])
 
     const handleTrailer = (idyoutube) => {
         setTrailer({

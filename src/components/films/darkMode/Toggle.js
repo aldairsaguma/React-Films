@@ -1,9 +1,11 @@
+import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
 
 /** react-outside-click-handler **/
 import OutsideClickHandler from 'react-outside-click-handler';
+import { Design } from './Design';
 
-export const Toggle = () => {
+const Toggle = () => {
 
 	const themeSelected = localStorage.getItem('theme');
 
@@ -27,8 +29,8 @@ export const Toggle = () => {
 			const dark_mode_exists = document.querySelector('.dark-mode-active');
 			if (!!dark_mode_exists) {
 				setDarkMode({
-					checked: !checked,
-					hasFocus : !hasFocus
+					checked: true,
+					hasFocus : true
 				});
 				localStorage.setItem('theme', 'dark');
 			}
@@ -38,7 +40,7 @@ export const Toggle = () => {
 			const dark_mode_exists = document.querySelector('.dark-mode-active');
 			if (!!dark_mode_exists) {
 				setDarkMode({
-					checked: !checked,
+					checked: false,
 					hasFocus : !hasFocus
 				});
 				localStorage.setItem('theme', '');
@@ -46,31 +48,32 @@ export const Toggle = () => {
 			document.querySelector('.dark-mode').classList.remove('dark-mode-active');
 		}
 
-	};
-
+	};	
 	return (
 		<div className="dark-mode-content">
 			<div className="title caja-1">{`Light`}</div>
-			<OutsideClickHandler
-				onOutsideClick={ () => {
-					setDarkMode({
-						...darkMode,
-						hasFocus : false
-					});
-					document.querySelector('.icon-mode-thumb').classList.remove('icon-mode-thumb-focus');
-				}}
-			>
-				<div className={`${themeSelected ? 'dark-mode-active ' : ''}dark-mode`} onClick={handleDarkMode}>
-					<div className="icon-mode-moon">
-						<span />
-					</div>
-					<div className="icon-mode-sun">
-						<span />
-					</div>
-					<div className="icon-mode-thumb" />
-				</div>
-			</OutsideClickHandler>
+
+	
+				<OutsideClickHandler
+					onOutsideClick={ () => {
+						setDarkMode({
+							...darkMode,
+							hasFocus : false
+						});
+						document.querySelector('.icon-mode-thumb').classList.remove('icon-mode-thumb-focus');
+					}}
+					disabled={!hasFocus}
+				>
+					<Design handleDarkMode={handleDarkMode} themeSelected={themeSelected} />
+
+				</OutsideClickHandler>
+
+
 			<div className="title caja-2">Dark</div>
+								
 		</div>
 	);
 };
+
+export default React.memo(Toggle);
+
