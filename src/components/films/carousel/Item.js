@@ -1,9 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-/** Styles **/
-import './scss/__carousel.scss';
-
 /** Data **/
 import { data } from './data';
 

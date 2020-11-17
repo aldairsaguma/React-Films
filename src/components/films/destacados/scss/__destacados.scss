@@ -1,0 +1,32 @@
+.desctacados__section-destacados{
+    .desctacados__container-destacados{
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 30px 0;
+        .box{
+            .title{
+                display: flex;
+                flex-direction: row;
+                font-size: 1.4rem;
+                position: relative;
+                &::before{
+                    content: "";
+                    display: block;
+                    border-top: solid transparent 10px;
+                    border-bottom: solid transparent 10px;
+                    border-left: solid $title 10px;
+                    border-right: solid transparent 10px;
+                    font-weight: bold;
+                    position: absolute;
+                    top: 6px;
+                    height: 20px;
+                    width: 20px;
+                }
+                span{
+                    padding-left: 15px;
+                }
+            }
+        }
+    }
+}
+    

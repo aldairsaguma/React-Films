@@ -14,7 +14,6 @@ const Dropdown = () => {
         active: false
     });
     
-    
     useEffect(() => {
         if(active){
             document.querySelector('.auth__dropdown-box').classList.add('auth__dropdown-box-active');
@@ -31,70 +30,37 @@ const Dropdown = () => {
         });
         
     }
-
-
-
+    
     return (
         <li className="dropdown__user-dropdown">
-
-            {
-                (active)?
-                (   
-                    // OutsideClickHandler -> actua cómo un div
-                    <OutsideClickHandler 
-                        onOutsideClick={ () => {
-                            setLogin({
-                                active: false
-                            });
-                        }} 
+            {/* OutsideClickHandler -> actua cómo un div */}
+            <OutsideClickHandler 
+                onOutsideClick={ () => {
+                    setLogin({
+                        active: false
+                    });
+                }} 
+                disabled={!active}
+            >
+                <button
+                    id="btn-login" 
+                    className="btn-login"
+                    onClick={handleDropdown}
                     >
-                        <button
-                            id="btn-login" 
-                            className="btn-login"
-                            onClick={handleDropdown}
-                            >
-                            <FontAwesomeIcon icon="user"/>
-                            { ' ' }
-                            <span className="icon-login">
-                                {`Login`}
-                                {/* {`Perfil`} */}
-                            </span>
-                        </button>
-                        <div className="auth__dropdown-box">
-                            {
-                                active && <Login /> 
-                                // active && <Account />
-                            }         
-                        </div>
-                    </OutsideClickHandler>
-
-                )
-                :
-                (
-                    <div>
-                        <button
-                            id="btn-login" 
-                            className="btn-login"
-                            onClick={handleDropdown}
-                            >
-                            <FontAwesomeIcon icon="user"/>
-                            { ' ' }
-                            <span className="icon-login">
-                                {`Login`}
-                                {/* {`Perfil`} */}
-                            </span>
-                        </button>
-                        <div className="auth__dropdown-box">
-                            {
-                                active && <Login /> 
-                                // active && <Account />
-                            }         
-                        </div>
-                    </div>
-                )  
-            }
-
-
+                    <FontAwesomeIcon icon="user"/>
+                    { ' ' }
+                    <span className="icon-login">
+                        {`Login`}
+                        {/* {`Perfil`} */}
+                    </span>
+                </button>
+                <div className="auth__dropdown-box">
+                    {
+                        active && <Login /> 
+                        // active && <Account />
+                    }         
+                </div>
+            </OutsideClickHandler>
         </li>
     )
 };
