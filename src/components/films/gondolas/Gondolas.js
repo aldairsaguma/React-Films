@@ -1,6 +1,10 @@
 import React from 'react';
-import Carousel from 'react-elastic-carousel'
+import Carousel,{consts} from 'react-elastic-carousel'
 import { Item } from './Item';
+import PropTypes from 'prop-types'
+
+import chevron_left_solid from './images/chevron-left-solid.svg';
+import chevron_right_solid from './images/chevron-right-solid.svg';
 
 /** Styles **/
 import './scss/styles.scss';
@@ -11,24 +15,34 @@ const breakPoints = [
     { width : 550 , itemsToShow : 2 },
     { width : 768 , itemsToShow : 3 },
     { width : 992 , itemsToShow : 4 },
-    { width : 1200 , itemsToShow : 5 }
+    { width : 1200 , itemsToShow : 6 }
 ]
 
-
-export const Destacados = () => {
+const myArrow = ({ type, onClick, isEdge }) => {
+    const pointer = type === consts.PREV ? <img src={chevron_left_solid} /> : <img src={chevron_right_solid} /> ;
     return (
-        <div className="desctacados__section-destacados">
-            <div className="desctacados__container-destacados">
+      <button onClick={onClick} disabled={isEdge}>
+        <span>{pointer}</span>
+      </button>
+    )
+}
+
+
+export const Gondolas = ({title}) => {
+    return (
+        
+        <div className="gondolas__section-gondolas">
+            <div className="gondolas__container-gondolas">
                <div className="box">
                    <div className="title">
-                      <span> Películas destacadas </span>
+                        <span> { title } </span>
                    </div>
                    <div>
                        <Carousel
                         breakPoints={breakPoints}
                         itemsToShow={6}
                         pagination={false}
-                        itemPadding={[10,15]}
+                        renderArrow={myArrow}
                        >
                             {
                                 imgList.map( (img, i) => (
@@ -41,4 +55,8 @@ export const Destacados = () => {
             </div>
         </div>
     )
+};
+
+Gondolas.propTypes = {
+   title : PropTypes.string.isRequired
 }

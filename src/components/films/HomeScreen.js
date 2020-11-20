@@ -1,12 +1,13 @@
 import React from 'react';
 import { ElasticCarousel } from './carousel/ElasticCarousel';
-import { Destacados } from './destacados/Destacados';
+import { Gondolas } from './gondolas/Gondolas';
 
 export const HomeScreen = () => {
     return (
         <>
             <ElasticCarousel />
-            <Destacados />
+            <Gondolas title='Películas destacadas' />
+            <Gondolas title='Películas Recientes' />
         </>
     )
 }

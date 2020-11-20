@@ -1,0 +1,88 @@
+.gondolas__section-gondolas{
+    .gondolas__container-gondolas{
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 30px 0 0 0;
+        .box{
+            .title{
+                display: flex;
+                flex-direction: row;
+                font-size: 1.4rem;
+                position: relative;
+                &::before{
+                    content: "";
+                    display: block;
+                    border-top: solid transparent 10px;
+                    border-bottom: solid transparent 10px;
+                    border-left: solid $title 10px;
+                    border-right: solid transparent 10px;
+                    font-weight: bold;
+                    position: absolute;
+                    top: 6px;
+                    height: 20px;
+                    width: 20px;
+                }
+                span{
+                    padding-left: 15px;
+                }
+            }
+            .rec-carousel{
+                position: relative;
+                &>button{
+                    align-items: center;
+                    background-color: rgba(255, 255, 255, .8);
+                    border-color: transparent;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    position: absolute;
+                    padding: 0;
+                    outline: 0;
+                    z-index: 1;
+                    height: 45px;
+                    min-width: 45px;
+                    width: 45px;
+                    top: 48%;
+                    &:focus:enabled, &:hover:enabled{
+                        color: $black;
+                    }
+                    &:hover:enabled{
+                        background-color: darken($color:rgba(255, 255, 255, .8), $amount: 10);
+                    }
+                    span{
+                        align-items: center;
+                        display: flex;
+                        font-size: 30px;
+                        height: 100%;
+                        font-family: initial;
+                        img{
+                            width: 20px;
+                        }
+                    }
+                }
+                &>button:first-child{
+                    left: 10px;
+                    right: auto;
+                }
+                &>button:last-child{
+                    left: auto;
+                    right: 10px;
+                }
+                >div{
+                    margin: 0;
+                }
+            }
+            .content-img{
+                transform: scale(.99);
+                img{
+                    transform: scale(.9);
+                    border-radius: 4px;
+                }
+            }
+            .content-img:not(:last-child){
+                padding: 0 10px 0 0;
+            }
+        }
+    }
+}
+    
