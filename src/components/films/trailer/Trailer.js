@@ -2,6 +2,8 @@ import React from 'react'
 import YouTube from 'react-youtube';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
+import './scss/styles.scss';
+
 
 export const Trailer = ({handleClosePopup,idYoutube}) => {
 

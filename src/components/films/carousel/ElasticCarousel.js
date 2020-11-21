@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Carousel from 'react-elastic-carousel';
 import { Item } from './Item';
-import { Trailer } from './Trailer';
+import { Trailer } from '../trailer/Trailer';
 /** Styles **/
 import './scss/styles.scss';
 

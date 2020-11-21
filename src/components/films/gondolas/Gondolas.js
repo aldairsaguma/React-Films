@@ -2,14 +2,34 @@ import React from 'react';
 import Carousel,{consts} from 'react-elastic-carousel'
 import { Item } from './Item';
 import PropTypes from 'prop-types'
-
+/** Data de prueba **/
+import { destacados } from './data';
+/** Images **/
 import chevron_left_solid from './images/chevron-left-solid.svg';
 import chevron_right_solid from './images/chevron-right-solid.svg';
-
 /** Styles **/
 import './scss/styles.scss';
 
-const imgList = ['uid1','uid2','uid3','uid4','uid5','uid6','uid7','uid8','uid9','uid10','uid11','uid12'];
+
+
+const imgList = []
+
+for (let index = 0; index < destacados.length; index++) {
+    imgList[index] = `uid${index+1}`;
+    
+}
+
+// console.log(imgList);
+
+//Array random
+// console.log(imgList);
+
+// const imgListRandom = [];
+// for (let index = 0; index < 1; index++) {
+//     imgListRandom[index] = imgList.slice().sort(() => Math.random() - 0.5)
+// }
+// console.log(imgListRandom[0]);
+
 const breakPoints = [
     { width : 1 , itemsToShow : 1 },
     { width : 550 , itemsToShow : 2 },
@@ -28,9 +48,8 @@ const myArrow = ({ type, onClick, isEdge }) => {
 }
 
 
-export const Gondolas = ({title}) => {
+export const Gondolas = ({title, type}) => {
     return (
-        
         <div className="gondolas__section-gondolas">
             <div className="gondolas__container-gondolas">
                <div className="box">
@@ -47,6 +66,7 @@ export const Gondolas = ({title}) => {
                             {
                                 imgList.map( (img, i) => (
                                     <Item  img={img} key={i+1} />
+                                    // console.log(img)
                                 ))
                             }
                        </Carousel>
@@ -58,5 +78,6 @@ export const Gondolas = ({title}) => {
 };
 
 Gondolas.propTypes = {
-   title : PropTypes.string.isRequired
+   title : PropTypes.string.isRequired,
+   type : PropTypes.number.isRequired
 }
