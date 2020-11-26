@@ -1,8 +1,8 @@
 import React from 'react';
-import Carousel,{consts} from 'react-elastic-carousel'
+import Carousel,{consts} from 'react-elastic-carousel';
 import { Item } from './Item';
-import PropTypes from 'prop-types'
-import { useInView } from 'react-intersection-observer'
+import PropTypes from 'prop-types';
+import { useInView } from 'react-intersection-observer';
 /** Data de prueba **/
 import { destacados } from './data';
 /** Images **/
@@ -45,7 +45,7 @@ export const Gondolas = ({title, type}) => {
     const [ ref, inView] = useInView({
         threshold : 1
     });
-    // console.log(inView); 
+    
     return (
         <div 
             className="gondolas__section-gondolas"

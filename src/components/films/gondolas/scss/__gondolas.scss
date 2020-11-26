@@ -99,8 +99,8 @@
                         left: 50%;
                         opacity: 0;
                         position: absolute;
-                        transition: width, opacity, background-color .1s ease-in-out;
-                        -webkit-transition: width, opacity, background-color .1s ease-in-out;
+                        transition: width, opacity, background-color,transform .2s ease-in-out;
+                        -webkit-transition: width, opacity, background-color,transform .2s ease-in-out;
                         width: 0;
                         z-index: 1;
                     }

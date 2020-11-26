@@ -6,7 +6,6 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 /** react-outside-click-handler **/
 import OutsideClickHandler from 'react-outside-click-handler';
-import { Account } from '../auth/Account';
 
 const Dropdown = () => {
 

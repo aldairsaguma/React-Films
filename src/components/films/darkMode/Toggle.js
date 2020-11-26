@@ -1,4 +1,3 @@
-import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
 
 /** react-outside-click-handler **/
