@@ -21,7 +21,10 @@ export const Item = ({img, handleTrailer}) => {
                                         className="presentation"
                                         // style={{ background : 'url(/assets/images/carousel/presentacion/' + `${img}` + '.jpg) no-repeat' }}
                                         >
-                                            <img src={`./assets/images/carousel/presentacion/${img}.jpg`} loading="lazy" alt={res.title} />
+                                            <img 
+                                                src={`./assets/images/carousel/presentacion/${img}.jpg`} loading="lazy" 
+                                                alt={res.title} 
+                                            />
                                     </div>
                                     <div className="text-bottom">
                                         <div>   

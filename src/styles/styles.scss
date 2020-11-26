@@ -7,6 +7,9 @@
 @import './fontawesome/scss/fontawesome.scss';
 @import './fontawesome/scss/solid.scss';
 
+/** Mixins **/
+@import './base/_mixins';
+
 /*Components*/
 @import './base/_general';
 @import './components/_films';

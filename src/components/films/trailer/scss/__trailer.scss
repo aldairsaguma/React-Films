@@ -6,6 +6,7 @@
     top: 0;
     background-color: rgba(0, 0, 0, 0.8);
     transition: background-color .4s;
+    -webkit-transition: background-color .4s;
     z-index: 4;
     .trailer-center{
         position: absolute;
@@ -25,6 +26,7 @@
             position: absolute;
             top: -50px;
             transition: ease .4s;
+            -webkit-transition: ease .4s;
         }
     }
 }

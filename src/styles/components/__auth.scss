@@ -4,7 +4,7 @@
 }
 /** Login **/
 .auth__dropdown-box{
-    background-color: $white;
+    @include bgColor($white);
     left: auto;
     margin-top: 15px;
     right: 0px;
@@ -98,7 +98,7 @@
         margin-top: 18px;
         margin-bottom: 18px;
         button{
-            background-color: $logo;
+            @include bgColor($logo);
             &:hover{
                 background-color: darken($color: $logo, $amount: 10);
             }
@@ -106,10 +106,10 @@
     }
     .btn-facebook{
        button{
-            background-color: $facebook;
+            @include bgColor($facebook);
             transition: ease .2s;
             &:hover{
-                background-color: #2d4373;
+                @include bgColor(#2d4373);
             }
             svg{
                 margin-right: 4px;
@@ -198,7 +198,7 @@
             }
             .auth__my_account,.auth__notification,.auth__settings,.auth__logout{
                 &::before{
-                    background-color: $iconAccount;
+                    @include bgColor($iconAccount);
                     font-family: $FontAwesome;
                     font-weight: 900;
                     font-size: 1.5rem;

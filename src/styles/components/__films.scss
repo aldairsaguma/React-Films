@@ -101,14 +101,16 @@
 }
 
 /** Destacados **/
-.desctacados__section-destacados{
-    .desctacados__container-destacados{
-        max-width: 1600px;
-        margin: 0 auto;
-        padding: 30px 0;
+.gondolas__section-gondolas{
+    .gondolas__container-gondolas{
         .box{
             .title{
                 font-family: $OpenSansBold;
+            }
+            .content-img{
+                .title-movie{
+                    font-family: $OpenSansBold;
+                }
             }
         }
     }

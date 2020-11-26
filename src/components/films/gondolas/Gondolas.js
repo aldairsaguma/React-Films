@@ -2,6 +2,7 @@ import React from 'react';
 import Carousel,{consts} from 'react-elastic-carousel'
 import { Item } from './Item';
 import PropTypes from 'prop-types'
+import { useInView } from 'react-intersection-observer'
 /** Data de prueba **/
 import { destacados } from './data';
 /** Images **/
@@ -9,21 +10,13 @@ import chevron_left_solid from './images/chevron-left-solid.svg';
 import chevron_right_solid from './images/chevron-right-solid.svg';
 /** Styles **/
 import './scss/styles.scss';
+import { Link } from 'react-router-dom';
 
 
 
-const imgList = []
 
-for (let index = 0; index < destacados.length; index++) {
-    imgList[index] = `uid${index+1}`;
-    
-}
-
-// console.log(imgList);
 
 //Array random
-// console.log(imgList);
-
 // const imgListRandom = [];
 // for (let index = 0; index < 1; index++) {
 //     imgListRandom[index] = imgList.slice().sort(() => Math.random() - 0.5)
@@ -47,15 +40,32 @@ const myArrow = ({ type, onClick, isEdge }) => {
     )
 }
 
-
 export const Gondolas = ({title, type}) => {
+
+    const [ ref, inView] = useInView({
+        threshold : 1
+    });
+    // console.log(inView); 
     return (
-        <div className="gondolas__section-gondolas">
+        <div 
+            className="gondolas__section-gondolas"
+            ref={ref}
+            >
             <div className="gondolas__container-gondolas">
                <div className="box">
-                   <div className="title">
-                        <span> { title } </span>
-                   </div>
+                    <div className="see-more">
+                        <div className="title">
+                                <span> { title } </span>
+                        </div>
+                        <div className="see-more-click">
+                            <div className="text-left">
+                                <Link to="/">
+                                    Ver más
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+
                    <div>
                        <Carousel
                         breakPoints={breakPoints}
@@ -64,9 +74,12 @@ export const Gondolas = ({title, type}) => {
                         renderArrow={myArrow}
                        >
                             {
-                                imgList.map( (img, i) => (
-                                    <Item  img={img} key={i+1} />
-                                    // console.log(img)
+                                destacados.map( (data, i) => (
+                                    <Item  
+                                        {...data} 
+                                        inView={inView} 
+                                        key={i+1} 
+                                    />
                                 ))
                             }
                        </Carousel>

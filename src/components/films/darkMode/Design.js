@@ -16,6 +16,6 @@ export const Design = ({handleDarkMode,themeSelected}) => {
 };
 
 Design.propTypes = {
-    handleDarkMode : PropTypes.func.isRequired,
-    themeSelected : PropTypes.string.isRequired
+    handleDarkMode : PropTypes.func.isRequired
+    // themeSelected : PropTypes.string.isRequired
 }
