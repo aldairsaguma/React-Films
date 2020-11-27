@@ -1,27 +1,25 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
+import { ShortInfo } from './ShortInfo';
 
 
-export const Item = (
-        {uid,title,duration,description,trailer,inView}
-        ) => {
+export const Item = ({uid,title,duration,description,trailer,inView,handleTrailer}) => {
+
     const images = useRef(null);
     const onErrorImage = `./assets/images/destacados/default.jpg`;
+    /** Enable Popup **/
 
-    // const test = document.querySelector('.gondolas__section-gondolas');
-    // const callbackFunction = (entries) => {
-    //     console.log(entries[0]);
-    // }
-    // const observer = new IntersectionObserver(callbackFunction);
-    // observer.observe(test);
-                                        
     return (
         <div className={ `${(inView)? 'info-top ' : 'info-bottom '} content-img` }>
                 <div className="info-box">
-                    <div className="info-movie">
-                        sadasassdssdaasd
-                    </div>
+
+                    <ShortInfo 
+                        duration={duration}  
+                        description={description}
+                        trailer={trailer}
+                        handleTrailer={handleTrailer}
+                        /> 
                     <Link to="/premiere">
                         <img 
                             src={`./assets/images/destacados/${uid}.jpg`} 
@@ -52,5 +50,6 @@ Item.propTypes = {
     title : PropTypes.string.isRequired,
     duration : PropTypes.string.isRequired,
     description : PropTypes.string.isRequired,
-    trailer : PropTypes.string.isRequired
+    trailer : PropTypes.string.isRequired,
+    handleTrailer : PropTypes.func.isRequired
 }

@@ -11,7 +11,7 @@ import { HomeScreen } from '../components/films/HomeScreen';
 import { Categories } from '../components/films/Categories';
 import { NavBar } from '../components/films/NavBar';
 import { Premiere } from '../components/films/Premiere';
-import { Footer } from '../components/footer/Footer';
+// import { Footer } from '../components/footer/Footer';
 
 export const AppRouter = () => {
     return (
@@ -25,7 +25,7 @@ export const AppRouter = () => {
                         <Redirect to="/" />
                     </Switch>
                 </div>
-            <Footer />
+            {/* <Footer /> */}
         </Router>
     )
 }

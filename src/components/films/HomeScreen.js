@@ -6,8 +6,8 @@ export const HomeScreen = () => {
     return (
         <>
             <ElasticCarousel />
-            <Gondolas title='Películas destacadas' type={1} />
-            <Gondolas title='Películas Recientes' type={2} />
+            <Gondolas title='Películas destacadas' types={1} />
+            <Gondolas title='Películas Recientes' types={2} />
         </>
     )
 }

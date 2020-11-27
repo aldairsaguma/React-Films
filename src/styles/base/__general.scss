@@ -11,3 +11,31 @@
         margin: auto;
     }
 }
+
+/** Destacados **/
+.gondolas__section-gondolas{
+    .gondolas__container-gondolas{
+        .box{
+            .title{
+                font-family: $OpenSansBold;
+            }
+            .content-img{
+                .title-movie{
+                    font-family: $OpenSansBold;
+                }
+            }
+            .info-movie{
+                .description{
+                    font-family: $OpenSansRegular;
+                }
+                .see{
+                    >div{
+                        button{
+                            font-family: $OpenSansRegular;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

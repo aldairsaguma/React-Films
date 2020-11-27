@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Carousel,{consts} from 'react-elastic-carousel';
 import { Item } from './Item';
 import PropTypes from 'prop-types';
@@ -11,10 +11,7 @@ import chevron_right_solid from './images/chevron-right-solid.svg';
 /** Styles **/
 import './scss/styles.scss';
 import { Link } from 'react-router-dom';
-
-
-
-
+import { Trailer } from '../trailer/Trailer';
 
 //Array random
 // const imgListRandom = [];
@@ -40,57 +37,84 @@ const myArrow = ({ type, onClick, isEdge }) => {
     )
 }
 
-export const Gondolas = ({title, type}) => {
+export const Gondolas = ({title, types}) => {
 
     const [ ref, inView] = useInView({
         threshold : 1
     });
-    
+
+    const [trailer , setTrailer] = useState({
+        popupState : false,
+        idYoutube : ''
+    });
+
+    const { popupState, idYoutube } = trailer;
+
+    const handleTrailer = (trailer) => {
+        setTrailer({
+            popupState : !popupState,
+            idYoutube : trailer
+        });
+    } 
+
+    const handleClosePopup = () => {
+        setTrailer({
+            popupState : !trailer,
+            idYoutube : ''
+        });
+    }
+        
     return (
-        <div 
-            className="gondolas__section-gondolas"
-            ref={ref}
-            >
-            <div className="gondolas__container-gondolas">
-               <div className="box">
-                    <div className="see-more">
-                        <div className="title">
-                                <span> { title } </span>
-                        </div>
-                        <div className="see-more-click">
-                            <div className="text-left">
-                                <Link to="/">
-                                    Ver más
-                                </Link>
+        <> 
+             {
+                 popupState && <Trailer handleClosePopup={handleClosePopup} idYoutube={idYoutube} />
+             } 
+            <div 
+                className="gondolas__section-gondolas"
+                ref={ref}
+                >
+                <div className="gondolas__container-gondolas">
+                <div className="box">
+                        <div className="see-more">
+                            <div className="title">
+                                    <span> { title } </span>
+                            </div>
+                            <div className="see-more-click">
+                                <div className="text-left">
+                                    <Link to="/">
+                                        Ver más
+                                    </Link>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                   <div>
-                       <Carousel
-                        breakPoints={breakPoints}
-                        itemsToShow={6}
-                        pagination={false}
-                        renderArrow={myArrow}
-                       >
-                            {
-                                destacados.map( (data, i) => (
-                                    <Item  
-                                        {...data} 
-                                        inView={inView} 
-                                        key={i+1} 
-                                    />
-                                ))
-                            }
-                       </Carousel>
-                   </div>
-               </div>
+                    <div>
+                        <Carousel
+                            breakPoints={breakPoints}
+                            itemsToShow={6}
+                            pagination={false}
+                            renderArrow={myArrow}
+                        >
+                                {
+                                    destacados.map( (data, i) => (
+                                        <Item  
+                                            {...data} 
+                                            inView={inView} 
+                                            handleTrailer={handleTrailer}
+                                            key={i+1} 
+                                        />
+                                    ))
+                                }
+                        </Carousel>
+                    </div>
+                </div>
+                </div>
             </div>
-        </div>
+        </>
     )
 };
 
 Gondolas.propTypes = {
    title : PropTypes.string.isRequired,
-   type : PropTypes.number.isRequired
+   types : PropTypes.number.isRequired
 }

@@ -33,7 +33,7 @@ export const ElasticCarousel = () => {
 
     const handleClosePopup = () => {
         setTrailer({
-            popupState : !trailer,
+            popupState : !popupState,
             idYoutube : ''
         });
     }

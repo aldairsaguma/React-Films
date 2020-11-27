@@ -23,7 +23,7 @@ export const Item = ({img, handleTrailer}) => {
                                         >
                                             <img 
                                                 src={`./assets/images/carousel/presentacion/${img}.jpg`} loading="lazy" 
-                                                alt={res.title} 
+                                                // alt={res.title} 
                                             />
                                     </div>
                                     <div className="text-bottom">
