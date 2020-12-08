@@ -1,10 +1,8 @@
 .films__header{
-    background-color: $white;
-    border-bottom: solid $light-grey 1px;
-    box-shadow: 0 0 0 1px $light-grey-shadow;
     position: sticky;
     top: 0;
     z-index: 999;
+    transition: background-color .5s ease;
     .films__header-sub{        
         max-width: 1600px;
         margin: auto;
@@ -67,7 +65,6 @@
                             text-align: end;
                             width: calc(100% / 3);
                             >a{
-                                color:$title;
                                 font-family: $OpenSansBold;
                                 font-size: 1rem;
                                 font-weight: 600;

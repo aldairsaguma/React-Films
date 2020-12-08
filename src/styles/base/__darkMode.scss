@@ -1,0 +1,30 @@
+
+.light-mode-enabled{
+    .films__header{
+        background-color: $white;
+        border-bottom: solid $light-grey 1px;
+        box-shadow: 0 0 0 1px $light-grey-shadow;
+        .films__ul-header{
+            > li{
+                >a{
+                    color:$title;
+                }
+            }
+        }
+    }
+}
+
+
+.dark-mode-enabled{
+    .films__header{
+        background-color: $darModeEnabled;
+        border-bottom: solid $darModeEnabled 1px;
+        .films__ul-header{
+            > li{
+                >a{
+                    color:$white;
+                }
+            }
+        }
+    }
+}

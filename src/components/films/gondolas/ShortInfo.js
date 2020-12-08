@@ -7,15 +7,14 @@ export const ShortInfo = ({duration, description, trailer,handleTrailer}) => {
    
 
     /**  Truncate string **/
-    let shortText;
     const truncateString = (description, num ) => {
         // If the length of str is less than or equal to num
         // just return str--don't truncate it.
         if (description.length <= num ) return description;  
-        return shortText = description.slice(0, num) + '...';
+        return description.slice(0, num) + '...';
 
     }
-    truncateString(description, 120);
+    const shortText = truncateString(description, 120);
 
     return (
         <div className="info-movie">
