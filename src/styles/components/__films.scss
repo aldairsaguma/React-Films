@@ -3,6 +3,7 @@
     top: 0;
     z-index: 999;
     transition: background-color .5s ease;
+    -webkit-transition: background-color .5s ease;
     .films__header-sub{        
         max-width: 1600px;
         margin: auto;
@@ -41,7 +42,6 @@
                         flex-grow: 1;
                         .films__form-search{
                             input{
-                                border: 1px solid $light-grey-shadow;
                                 border-radius: 4px;
                                 font-size: 1rem;
                                 font-family: $OpenSansRegular;

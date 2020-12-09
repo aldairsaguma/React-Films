@@ -1,5 +1,8 @@
 
-.light-mode-enabled{
+/** Light Mode **/
+
+.light-mode{
+    /** NavBar **/
     .films__header{
         background-color: $white;
         border-bottom: solid $light-grey 1px;
@@ -11,11 +14,20 @@
                 }
             }
         }
+        /** Input search **/
+        .films_search-films{
+            .films__form-search{
+                input{
+                    border: 1px solid $light-grey-shadow;
+                }
+            }
+        }
     }
 }
 
-
+/** Dark Mode **/
 .dark-mode-enabled{
+    /** NavBar **/
     .films__header{
         background-color: $darModeEnabled;
         border-bottom: solid $darModeEnabled 1px;
@@ -23,6 +35,20 @@
             > li{
                 >a{
                     color:$white;
+                }
+            }
+        }
+        /** Input search **/
+        .films_search-films{
+            .films__form-search{
+                input{
+                    background-color: $bgDarkMode;
+                    border: 1px solid $bgDarkMode;
+                    transition: background-color .5s ease;
+                    color: $white;
+                    &::placeholder{
+                        color: $white;
+                    }
                 }
             }
         }

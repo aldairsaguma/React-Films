@@ -1,16 +1,34 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { userContext } from '../userContext';
+import { useThemeDetector } from './useThemeDetector';
 
 /** react-outside-click-handler **/
 import OutsideClickHandler from 'react-outside-click-handler';
 import { Design } from './Design';
 
 const Toggle = () => {
-
+	
 	/** Use content for dark mode **/
 	const {darkMode, setDarkMode} = useContext(userContext);
 
-	const themeSelected = localStorage.getItem('theme');
+	// useThemeDetector - Detectamos el tema del sistema - Hacemos un condicional en la que si el tema es dark creamos en el localStorage
+	// creamos la Key -> "Dark" y le asignamos 'true' 
+	const themeDefault = useThemeDetector();
+	useEffect(() => {
+		const localStorageDark = JSON.parse(localStorage.getItem('dark'));
+		const themeSO = () => {
+			if(localStorageDark === null){
+				if(themeDefault){
+					return localStorage.setItem('dark','true');
+				}
+			}
+			return;
+		}
+		themeSO();
+	}, [themeDefault])
+
+
+	const themeSelected = JSON.parse(localStorage.getItem('dark'));
 
 	const [ focus, setHasFocus ] = useState({
 		hasFocus : false
@@ -20,24 +38,23 @@ const Toggle = () => {
 
 	/** Comprobamos el estado inicial de dark mode **/
 	useEffect(() => {
-		const initialMode = localStorage.getItem('theme'); 
-		/** Comprobar si esta en verdadero o falso usando la negación y doble negación**/
-		if(!initialMode){
-			setDarkMode({
-				darkMode : false
-			});
-		}else if(!!initialMode){
+		/** Comprobar si esta en verdadero o falso**/
+		if(themeSelected){
 			setDarkMode({
 				darkMode : true
 			});
+		}else{
+			setDarkMode({
+				darkMode : false
+			});
 		}
-	}, [setDarkMode])
+	}, [setDarkMode,themeSelected])
 
 
 	/** Se ejecuta al cambiar estado de hasFocus **/
 	useEffect(() => {
 		if(hasFocus) document.querySelector('.icon-mode-thumb').classList.add('icon-mode-thumb-focus');
-	}, [hasFocus])
+	}, [hasFocus]);
 
 	const handleDarkMode = () => {
 		
@@ -53,7 +70,7 @@ const Toggle = () => {
 				setDarkMode({
 					darkMode : true
 				});
-				localStorage.setItem('theme', 'dark');
+				localStorage.setItem('dark', 'true');
 			}
 			
 		} else {
@@ -66,12 +83,13 @@ const Toggle = () => {
 				setDarkMode({
 					darkMode : !darkMode
 				});
-				localStorage.setItem('theme', '');
+				localStorage.setItem('dark', 'false');
 			}
 			document.querySelector('.dark-mode').classList.remove('dark-mode-active');
 		}
 
 	};	
+
 	return (
 		<div className="dark-mode-content">
 			<div className="title caja-1">{`Light`}</div>
