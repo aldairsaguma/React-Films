@@ -10,6 +10,9 @@
 /** Mixins **/
 @import './base/_mixins';
 
+/** Extends **/
+@import './base/_extends';
+
 /*Components*/
 @import './base/_darkMode';
 @import './base/_general';

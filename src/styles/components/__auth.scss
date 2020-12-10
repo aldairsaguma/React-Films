@@ -19,7 +19,6 @@
         border-radius: 4px;
         padding-bottom: 1px;
         &::before{
-            border-bottom: 8px solid $title ;
             border-left: 8px solid transparent;
             border-right: 8px solid transparent;
             content:'';

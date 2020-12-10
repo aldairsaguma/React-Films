@@ -2,8 +2,7 @@
     position: sticky;
     top: 0;
     z-index: 999;
-    transition: background-color .5s ease;
-    -webkit-transition: background-color .5s ease;
+    @extend .transition-5s;
     .films__header-sub{        
         max-width: 1600px;
         margin: auto;

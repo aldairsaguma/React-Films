@@ -1,10 +1,10 @@
-
 /** Light Mode **/
 
 .light-mode{
+    transition: color .5s ease;
     /** NavBar **/
     .films__header{
-        background-color: $white;
+        @include bgColor($white);
         border-bottom: solid $light-grey 1px;
         box-shadow: 0 0 0 1px $light-grey-shadow;
         .films__ul-header{
@@ -23,18 +23,59 @@
             }
         }
     }
+
+    /** Dark mode **/
+    .dark-mode-content{
+        .caja-1,.caja-2{
+            color: $title;
+        }
+    }
+
+    /** Gondolas **/
+    .gondolas__section-gondolas{
+        .gondolas__container-gondolas{
+            .box{
+                color: $title;
+                .title{
+                    &::before{
+                        border-left: solid $title 10px;
+                    }
+                }
+                .see-more{
+                    .see-more-click{
+                        a{
+                            color: $title;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /** Dropdown **/
+    .dropdown__user-dropdown{
+        .auth__dropdown-box{
+            .auth__dropdown-container-login, .auth__dropdown-account{
+                &::before{
+                    border-bottom: 8px solid $title ;
+                }
+            }
+        }
+    }
 }
 
 /** Dark Mode **/
 .dark-mode-enabled{
+    @include bgColor(#101113);
+    color: $colorDark;
+    @extend .transition-5s;
     /** NavBar **/
     .films__header{
-        background-color: $darModeEnabled;
+        @include bgColor($darModeEnabled);
         border-bottom: solid $darModeEnabled 1px;
         .films__ul-header{
             > li{
                 >a{
-                    color:$white;
+                    color:$colorDark;
                 }
             }
         }
@@ -42,13 +83,57 @@
         .films_search-films{
             .films__form-search{
                 input{
-                    background-color: $bgDarkMode;
+                    @include bgColor($bgDarkMode);
                     border: 1px solid $bgDarkMode;
-                    transition: background-color .5s ease;
+                    @extend .transition-5s;
                     color: $white;
                     &::placeholder{
-                        color: $white;
+                        color: $colorDark;
                     }
+                }
+            }
+        }
+    }
+    /** Dark mode **/
+    .dark-mode-content{
+        .caja-1,.caja-2{
+            color: $colorDark;
+        }
+    }
+    /** Gondolas **/
+    .gondolas__section-gondolas{
+        .gondolas__container-gondolas{
+            .box{
+                .title{
+                    &::before{
+                        border-left: solid $colorDark 10px;
+                    }
+                }
+                .see-more{
+                    .see-more-click{
+                        a{
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /** Dropdown **/
+    .dropdown__user-dropdown{
+        .auth__dropdown-box{
+            @include bgColor($colorDark);
+            .auth__dropdown-container-login, .auth__dropdown-account{
+                &::before{
+                    border-bottom: 8px solid $colorDark ;
+                }
+            }
+            form{
+                label{
+                    color: $title;
+                }
+                input{
+                    @include bgColor($colorDark);
                 }
             }
         }
