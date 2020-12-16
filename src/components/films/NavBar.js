@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import Dropdown  from './Dropdown';
+import Dropdown  from '../login/Dropdown';
 import Toggle from './darkMode/Toggle';
 import { userContext } from './userContext';
 
 export const NavBar = () => {
-    const {darkMode} = useContext(userContext);
+    const {userState} = useContext(userContext);
+    const {darkMode} = userState;
     return (
         <header className="films__header">
             <div className="films__header-sub">
@@ -18,7 +19,7 @@ export const NavBar = () => {
                                 > 
                                 <img 
                                     tabIndex={2}
-                                    src={`../assets/images/${ !darkMode.darkMode ? 'logo-light' : 'logo-dark'}.png`}
+                                    src={`${process.env.PUBLIC_URL}/assets/images/logo/${ !darkMode ? 'logo-light' : 'logo-dark'}.png`}
                                     //src="../assets/images/films.png" 
                                     alt="PelisES" 
                                     title="PelisES" />

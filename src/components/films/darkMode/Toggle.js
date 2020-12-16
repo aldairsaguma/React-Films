@@ -9,7 +9,8 @@ import { Design } from './Design';
 const Toggle = () => {
 	
 	/** Use content for dark mode **/
-	const {darkMode, setDarkMode} = useContext(userContext);
+	const {userState, setUserState} = useContext(userContext);
+	const {darkMode} = userState;
 
 	// useThemeDetector - Detectamos el tema del sistema - Hacemos un condicional en la que si el tema es dark creamos en el localStorage
 	// creamos la Key -> "Dark" y le asignamos 'true' 
@@ -40,15 +41,17 @@ const Toggle = () => {
 	useEffect(() => {
 		/** Comprobar si esta en verdadero o falso**/
 		if(themeSelected){
-			setDarkMode({
+			setUserState({
+				...userState,
 				darkMode : true
 			});
 		}else{
-			setDarkMode({
+			setUserState({
+				...userState,
 				darkMode : false
 			});
 		}
-	}, [setDarkMode,themeSelected])
+	}, [setUserState,themeSelected])
 
 
 	/** Se ejecuta al cambiar estado de hasFocus **/
@@ -58,7 +61,7 @@ const Toggle = () => {
 
 	const handleDarkMode = () => {
 		
-		if (!darkMode.darkMode) {
+		if (!darkMode) {
 			//Si darkMode y hasFocus son diferentes de falsos se activa el dark mode
 			const mode = document.querySelector('.dark-mode');
 			mode.classList.add('dark-mode-active');
@@ -67,7 +70,8 @@ const Toggle = () => {
 				setHasFocus({
 					hasFocus : true
 				});
-				setDarkMode({
+				setUserState({
+					...userState,
 					darkMode : true
 				});
 				localStorage.setItem('dark', 'true');
@@ -80,7 +84,8 @@ const Toggle = () => {
 				setHasFocus({
 					hasFocus : true
 				});
-				setDarkMode({
+				setUserState({
+					...userState,
 					darkMode : !darkMode
 				});
 				localStorage.setItem('dark', 'false');

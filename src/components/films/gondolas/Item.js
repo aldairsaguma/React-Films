@@ -22,7 +22,7 @@ export const Item = ({uid,title,duration,description,trailer,inView,handleTraile
                         /> 
                     <Link to="/premiere">
                         <img 
-                            src={`./assets/images/destacados/${uid}.jpg`} 
+                            src={`${process.env.PUBLIC_URL}/assets/images/destacados/${uid}.jpg`} 
                             alt={title} 
                             onError={
                                 () => {

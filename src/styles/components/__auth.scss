@@ -88,6 +88,7 @@
             font-size: .9rem;
             height: 35px;
             transition: ease .2s;
+            -webkit-transition: ease .2s;
             width: 100%;
             margin-bottom: 0;
         }
@@ -106,7 +107,6 @@
     .btn-facebook{
        button{
             @include bgColor($facebook);
-            transition: ease .2s;
             &:hover{
                 @include bgColor(#2d4373);
             }

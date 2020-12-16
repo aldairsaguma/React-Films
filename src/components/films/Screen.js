@@ -2,19 +2,26 @@ import React, { useContext } from 'react';
 import { userContext } from './userContext';
 /** Components **/
 import { AppRouter } from '../../routers/AppRouter';
+import { CreateAccount } from '../login/CreateAccount';
 /** Font Awesome **/
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faUser, faTimes, faPlay} from '@fortawesome/free-solid-svg-icons';
+import {faUser, faTimes, faPlay, faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import {faUser as faUserRegular} from '@fortawesome/free-regular-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons'
-library.add(faUser,faUserRegular,fab,faTimes,faPlay);
+import { fab } from '@fortawesome/free-brands-svg-icons';
+library.add(faUser,faUserRegular,fab,faTimes,faPlay,faEye, faEyeSlash);
 
 export const Screen = () => {
     /** Verificar si el dark mode esta activado **/
-    const {darkMode} = useContext(userContext);
+    const {userState} = useContext(userContext);
+    const {darkMode, singIn} = userState;
     return (
-        <div className={`wrapper${ darkMode.darkMode ? ' dark-mode-enabled' : ' light-mode' }`} >
-            <AppRouter />
-        </div>
+        <>
+            {
+                singIn && (<CreateAccount />)
+            }
+            <div className={`wrapper${ darkMode ? ' dark-mode-enabled' : ' light-mode' }`} >
+                <AppRouter />
+            </div>
+        </>
     )
 }

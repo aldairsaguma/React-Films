@@ -1,0 +1,118 @@
+.createAccount__container{
+    @include bgColor(rgba(0,0,0,.9));
+    bottom: 0;
+    display: none;
+    position: fixed;
+    left: 0;
+    opacity: 0;
+    right: 0;
+    top: 0;
+    transition: opacity .2s ease;
+    z-index: 1000;
+    .create-account{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 450px;
+        .create-account-body{
+            display: flex;
+            flex-direction: column;
+            h3{
+                color: $colorDark;
+            }
+            .close-create-account{
+                color: $white;
+                cursor: pointer;
+                font-size: 1.8rem;
+                float: right;
+            }
+            .form-div{
+                @include bgColor($title);
+                border-radius: 8px;
+                padding: 15px;
+                form{
+                    .body-form{
+                        display: grid;
+                        gap: 15px 0px;
+                        grid-template-columns: repeat(1, 1fr);
+                        input{
+                            border: none;
+                            border-radius: 4px;
+                            @include bgColor($colorDark);
+                            color: $title;
+                            height: 35px;
+                            outline: none;
+                            padding: 0 10px;
+                            width: 100%;
+                            &::placeholder{
+                                color: $title;
+                            }
+                        }
+                        .campo-obligatorio{
+                            color: $obligatory;
+                            display: none;
+                            font-size: .9rem;
+                            margin-top: 3px;
+                        }
+                        .password-validator{
+                            position: relative;
+                            span{
+                                cursor: pointer;
+                                font-size: 1.1rem;
+                                position: absolute;
+                                left: auto;
+                                right: 10px;
+                                top: 5px;
+                            }
+                        }
+                    }
+                    .btn-registrar{
+                        margin-top: 15px;
+                        text-align: center;
+                        button{
+                            @include bgColor($logo);
+                            border-color: transparent;
+                            border-radius: 4px;
+                            color: $white;
+                            font-family: $OpenSansSemi;
+                            font-size: 1rem;
+                            height: 35px;
+                            outline: 0;
+                            transition: ease 0.2s;
+                            width: 100%;
+                            margin-bottom: 0;
+                            &:hover{
+                                background-color: darken($color: $logo, $amount: 10);
+                            }
+                        }
+                    }
+                }
+                .register-facebook{
+                    text-align: center;
+                    button{
+                        @include bgColor($facebook);
+                        border-color: transparent;
+                        border-radius: 4px;
+                        color: $white;
+                        font-family: $OpenSansSemi;
+                        font-size: 1rem;
+                        height: 35px;
+                        outline: 0;
+                        margin-top: 15px;
+                        transition: ease 0.2s;
+                        -webkit-transition: ease 0.2s;
+                        width: 100%;
+                        &:hover{
+                            @include bgColor(#2d4373);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.createAccount-active{
+display: block;
+opacity: 1;
+}

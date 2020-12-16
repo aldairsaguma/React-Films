@@ -14,15 +14,14 @@ export const Item = ({img, handleTrailer}) => {
                     (res.uid === img ) && (
                         <div className="carousel__images-body-sub" key={img}>
                             <div className="xrjs">
-                                <div className="coverPage" style={{ backgroundImage : `url(./assets/images/carousel/portadas/${img}.jpg)` }}>
+                                <div className="coverPage" style={{ backgroundImage : `url(${process.env.PUBLIC_URL}/assets/images/carousel/portadas/${img}.jpg)` }}>
                                 </div>
                                 <div className="nsqp">
                                     <div 
                                         className="presentation"
-                                        // style={{ background : 'url(/assets/images/carousel/presentacion/' + `${img}` + '.jpg) no-repeat' }}
                                         >
                                             <img 
-                                                src={`./assets/images/carousel/presentacion/${img}.jpg`} loading="lazy" 
+                                                src={`${process.env.PUBLIC_URL}/assets/images/carousel/presentacion/${img}.jpg`} loading="lazy" 
                                                 // alt={res.title} 
                                             />
                                     </div>

@@ -17,7 +17,7 @@ export const Trailer = ({handleClosePopup,idYoutube}) => {
     };
 
     return (
-        <div className="trailer__container">
+        <div className="trailer__container" onClick={handleClosePopup}>
             <div className="trailer-center">
                 <div className="close-popup" onClick={handleClosePopup}>
                     <FontAwesomeIcon icon="times" title="Close" />

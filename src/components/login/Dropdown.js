@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Login } from '../auth/Login';
-import { Account } from '../auth/Account';
+import { Login } from './Login';
+import { Account } from './Account';
 /** Font Awesome **/
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
@@ -55,8 +55,8 @@ const Dropdown = () => {
                 </button>
                 <div className="auth__dropdown-box">
                     {
-                        // active && <Login /> 
-                        active && <Account />
+                        active && <Login /> 
+                        // active && <Account />
                     }         
                 </div>
             </OutsideClickHandler>

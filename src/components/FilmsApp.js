@@ -7,13 +7,14 @@ import { userContext } from './films/userContext';
 export const FilmsApp = () => {
     
     /**  Estado dark mode **/
-    const [darkMode, setDarkMode] = useState({
-        darkMode : false
+    const [userState, setUserState] = useState({
+        darkMode : false,
+        singIn: false
     });
-    
+
 
     return (
-        <userContext.Provider value={{darkMode, setDarkMode}}>
+        <userContext.Provider value={{userState, setUserState}}>
             <Screen />
         </userContext.Provider>
     )

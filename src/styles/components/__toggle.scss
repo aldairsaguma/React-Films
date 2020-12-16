@@ -41,7 +41,7 @@
             &::before{
                 content: '';
                 background: {
-                    image: url('/assets/svg/sun.svg');
+                    image: url('/images/assets/toggle/sun.svg');
                     repeat: no-repeat;
                 };
                 display: flex;
@@ -72,7 +72,7 @@
                 &::before{
                     content: '';
                     background: {
-                        image: url('/assets/svg/moon.svg');
+                        image: url('/images/assets/toggle/moon.svg');
                         repeat: no-repeat;
                     }
                     display: block;
