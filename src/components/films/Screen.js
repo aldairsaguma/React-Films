@@ -5,10 +5,10 @@ import { AppRouter } from '../../routers/AppRouter';
 import { CreateAccount } from '../login/CreateAccount';
 /** Font Awesome **/
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faUser, faTimes, faPlay, faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+import {faUser, faTimes, faPlay, faEye, faEyeSlash, faTimesCircle} from '@fortawesome/free-solid-svg-icons';
 import {faUser as faUserRegular} from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-library.add(faUser,faUserRegular,fab,faTimes,faPlay,faEye, faEyeSlash);
+library.add(faUser,faUserRegular,fab,faTimes,faPlay,faEye, faEyeSlash,faTimesCircle);
 
 export const Screen = () => {
     /** Verificar si el dark mode esta activado **/

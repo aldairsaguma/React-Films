@@ -56,15 +56,18 @@
                             margin-top: 3px;
                         }
                         .password-validator{
-                            position: relative;
-                            span{
-                                cursor: pointer;
-                                font-size: 1.1rem;
-                                position: absolute;
-                                left: auto;
-                                right: 10px;
-                                top: 5px;
+                            &>div{
+                                position: relative;
+                                span{
+                                    cursor: pointer;
+                                    font-size: 1.1rem;
+                                    position: absolute;
+                                    left: auto;
+                                    right: 10px;
+                                    top: 5px;
+                                }
                             }
+                            
                         }
                     }
                     .btn-registrar{
@@ -112,7 +115,12 @@
         }
     }
 }
+
+.createAccount__container .create-account .create-account-body .form-div form .body-form .campo-obligatorio-error{
+    display: block;
+}
+
 .createAccount-active{
-display: block;
-opacity: 1;
+    display: block;
+    opacity: 1;
 }

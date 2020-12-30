@@ -1,5 +1,7 @@
 import React, { useContext } from 'react'
 import { userContext } from '../films/userContext';
+/** Validaciones **/
+import { validaciones } from './validaciones';
 
 /** FontAwesome **/
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,7 +13,19 @@ export const CreateAccount = () => {
     const {userState, setUserState} = useContext(userContext);
     const {singIn} = userState;
 
-    const [passwordShown, setpasswordShown] = useState(false)
+    const [showPassword, setshowPassword] = useState(false);
+
+    /** Estado de inputs **/
+
+    const [inputState, setInputState] = useState({
+        rName : false, 
+        rLastName : false,
+        rEmail : false,
+        rPassword : false,
+        rPassword2 : false
+    });
+
+    const { rName, rLastName, rEmail, rPassword, rPassword2 } = inputState;
 
     /** Cerrar Modal delegando eventos**/
     const handleClosed = (e) => {
@@ -30,16 +44,25 @@ export const CreateAccount = () => {
         e.stopPropagation();
     }
 
+    /** Ver contraseña **/
+    const handleViewPassword = () => {
+        setshowPassword(!showPassword)
+    }
+
+    /** Validación de formulario **/
+    const handleValidation = (e) => {
+        validaciones(e.target,setInputState);
+    }
+
+
     /** Registrar usuario **/
     const handleRegister = (e) => {
         e.preventDefault();
-        console.log(e);
+        if (rName && rLastName && rEmail && rPassword && rPassword2) {
+            
+        }
     }
 
-    /** Ver contraseña **/
-    const handleViewPassword = () => {
-        setpasswordShown(!passwordShown)
-    }
 
     return (
         <div className="createAccount__container createAccount-active" onClick={handleClosed} >
@@ -54,62 +77,98 @@ export const CreateAccount = () => {
                         <div>
                             <h3>{`Crear cuenta`}</h3>
                         </div>
-                        <form action="" onSubmit={handleRegister}>
+                        <form action="" id="formCreateAccount" className="formCreateAccount" onSubmit={handleRegister}>
                             <div className="body-form">
-                                <div>
-                                    <input 
-                                        type="text" 
-                                        placeholder="Nombre" 
-                                        name="rName" 
-                                    />
+                                <div id="group__rName">
+                                    <div>
+                                        <input 
+                                            type="text" 
+                                            placeholder="Nombre" 
+                                            name="rName" 
+                                            id="rName"
+                                            onKeyUp={handleValidation}
+                                            onBlur={handleValidation}
+                                        />
+                                    </div>
+                                    <span className="campo-obligatorio">{`Ingrese solo letras.`}</span>
                                     {/* <span className="campo-obligatorio">{`Este es un campo obligatorio.`}</span> */}
                                 </div>
-                                <div>
-                                    <input 
-                                        type="text" 
-                                        placeholder="Apellido"
-                                        name="rLastName"
-                                    />
-                                </div>
-                                <div>
-                                    <input 
-                                        type="email" 
-                                        placeholder="Correo"
-                                        name="rEmail" 
-                                    />
-                                </div>
-                                <div>
-                                    <div className="password-validator">
+                                <div id="group__rLastName">
+                                    <div>
                                         <input 
-                                            type={ passwordShown ? 'text' : 'password' } 
-                                            placeholder="Contraseña"
-                                            name="rPassword" 
+                                            type="text" 
+                                            placeholder="Apellido"
+                                            name="rLastName"
+                                            id="rLastName"
+                                            onKeyUp={handleValidation}
+                                            onBlur={handleValidation}
                                         />
-                                        <span className="view-password" onClick={handleViewPassword}>
-                                            {
-                                                passwordShown ?
-                                                (<FontAwesomeIcon icon="eye-slash" title="Ocultar" />)
-                                                :
-                                                (<FontAwesomeIcon icon="eye" title="Ver" />)
-                                            }
-                                        </span>
+                                    </div>
+                                    <span className="campo-obligatorio">{`Ingrese solo letras.`}</span>
+                                </div>
+                                <div id="group__rEmail">
+                                    <div>
+                                        <input 
+                                            type="email" 
+                                            placeholder="Correo"
+                                            name="rEmail"
+                                            id="rEmail" 
+                                            onKeyUp={handleValidation}
+                                            onBlur={handleValidation}
+                                        />
+                                    </div>
+                                    <span className="campo-obligatorio">{`Ingrese un correo valido.`}</span>
+                                </div>
+                                <div>
+                                    <div id="group__rPassword" className="password-validator">
+                                        <div>
+                                            <input 
+                                                type={ showPassword ? 'text' : 'password' } 
+                                                placeholder="Contraseña"
+                                                name="rPassword"
+                                                id="rPassword" 
+                                                autoComplete="true"
+                                                minLength="4"
+                                                maxLength="30"
+                                                onKeyUp={handleValidation}
+                                                onBlur={handleValidation}
+                                            />
+                                            <span className="view-password" onClick={handleViewPassword}>
+                                                {
+                                                    showPassword ?
+                                                    (<FontAwesomeIcon icon="eye-slash" title="Ocultar" />)
+                                                    :
+                                                    (<FontAwesomeIcon icon="times-circle" title="Ver" />)
+                                                }
+                                            </span>
+                                        </div>
+                                        <span className="campo-obligatorio">{`La contraseña debe tener de  4 a 30 caracteres.`}</span>
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="password-validator">
-                                        <input 
-                                            type={ passwordShown ? 'text' : 'password' } 
-                                            placeholder="Repetir contraseña" 
-                                            name="rPassword2"
-                                        />
-                                        <span className="view-password" onClick={handleViewPassword}>
-                                            {
-                                                passwordShown ?
-                                                (<FontAwesomeIcon icon="eye-slash" title="Ocultar" />)
-                                                :
-                                                (<FontAwesomeIcon icon="eye" title="Ver" />)
-                                            }
-                                        </span>
+                                    <div id="group__rPassword2" className="password-validator">
+                                        <div>
+                                            <input 
+                                                type={ showPassword ? 'text' : 'password' } 
+                                                placeholder="Repetir contraseña" 
+                                                name="rPassword2"
+                                                id="rPassword2"
+                                                autoComplete="true"
+                                                minLength="4"
+                                                maxLength="30"
+                                                onKeyUp={handleValidation}
+                                                onBlur={handleValidation}
+                                            />
+                                            <span className="view-password" onClick={handleViewPassword}>
+                                                {
+                                                    showPassword ?
+                                                    (<FontAwesomeIcon icon="eye-slash" title="Ocultar" />)
+                                                    :
+                                                    (<FontAwesomeIcon icon="eye" title="Ver" />)
+                                                }
+                                            </span>
+                                        </div>
+                                        <span className="campo-obligatorio">{`Ambas contraseñas deben ser iguales.`}</span>
                                     </div>
                                 </div>
                             </div>
