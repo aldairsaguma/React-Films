@@ -8,7 +8,7 @@ export const validaciones = (input, setInputState) => {
     const { rName, rLastName, rEmail, rPassword } = expresiones;
 
     const validarCampos = (expresion, nombre, valor) => {
-        if(valor.length>0){
+        // if(valor.length>0){
             if(expresion.test(valor)){
              
                 document.getElementById(`group__${nombre}`).children[1].classList.remove('campo-obligatorio-error');
@@ -17,10 +17,10 @@ export const validaciones = (input, setInputState) => {
                 document.getElementById(`group__${nombre}`).children[1].classList.add('campo-obligatorio-error');
                 setInputState( inputState => ({...inputState,[nombre] : false}) );
             } 
-        }else{
-            document.getElementById(`group__${nombre}`).children[1].classList.remove('campo-obligatorio-error');
-            setInputState( inputState => ({...inputState,[nombre] : false}) );
-        }
+        // }else{
+        //     document.getElementById(`group__${nombre}`).children[1].classList.remove('campo-obligatorio-error');
+        //     setInputState( inputState => ({...inputState,[nombre] : false}) );
+        // }
     }
 
     const validarPassword = () => {
@@ -29,9 +29,9 @@ export const validaciones = (input, setInputState) => {
         const password2 = document.getElementById('rPassword2');
         if (password1.value.length > 0 || password2.value.length > 0) {
             if(password1.value === password2.value){
-                console.log('iguales');
+                setInputState( inputState => ({ ...inputState, vPassword : true }) );
             }else{
-                console.log('diferentes');
+                setInputState( inputState => ({ ...inputState, vPassword : false }) );
             }
         }
     }

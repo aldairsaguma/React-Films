@@ -65,6 +65,12 @@
                                     left: auto;
                                     right: 10px;
                                     top: 5px;
+                                    .validated-success{
+                                        color: #0056b3;
+                                    }
+                                    .validated-failed{
+                                        color: $obligatory-dark;
+                                    }
                                 }
                             }
                             

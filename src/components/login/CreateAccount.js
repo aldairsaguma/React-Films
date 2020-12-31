@@ -13,19 +13,18 @@ export const CreateAccount = () => {
     const {userState, setUserState} = useContext(userContext);
     const {singIn} = userState;
 
-    const [showPassword, setshowPassword] = useState(false);
-
     /** Estado de inputs **/
 
     const [inputState, setInputState] = useState({
-        rName : false, 
-        rLastName : false,
-        rEmail : false,
-        rPassword : false,
-        rPassword2 : false
+        rName : 0, 
+        rLastName : 0,
+        rEmail : 0,
+        rPassword : 0,
+        rPassword2 : 0,
+        vPassword : 0
     });
 
-    const { rName, rLastName, rEmail, rPassword, rPassword2 } = inputState;
+    const { rName, rLastName, rEmail, rPassword, rPassword2, vPassword } = inputState;
 
     /** Cerrar Modal delegando eventos**/
     const handleClosed = (e) => {
@@ -42,11 +41,6 @@ export const CreateAccount = () => {
             });
         }
         e.stopPropagation();
-    }
-
-    /** Ver contraseña **/
-    const handleViewPassword = () => {
-        setshowPassword(!showPassword)
     }
 
     /** Validación de formulario **/
@@ -123,7 +117,7 @@ export const CreateAccount = () => {
                                     <div id="group__rPassword" className="password-validator">
                                         <div>
                                             <input 
-                                                type={ showPassword ? 'text' : 'password' } 
+                                                type="password"
                                                 placeholder="Contraseña"
                                                 name="rPassword"
                                                 id="rPassword" 
@@ -133,13 +127,25 @@ export const CreateAccount = () => {
                                                 onKeyUp={handleValidation}
                                                 onBlur={handleValidation}
                                             />
-                                            <span className="view-password" onClick={handleViewPassword}>
-                                                {
-                                                    showPassword ?
-                                                    (<FontAwesomeIcon icon="eye-slash" title="Ocultar" />)
-                                                    :
-                                                    (<FontAwesomeIcon icon="times-circle" title="Ver" />)
-                                                }
+                                            <span className="status-validation">
+                                                {(
+                                                    () => {
+                                                        switch (vPassword) {
+                                                            case 0:
+                                                                return;
+
+                                                            case true:
+                                                                return <FontAwesomeIcon icon="check-circle" className="validated-success" />
+
+                                                            case false:
+                                                                return <FontAwesomeIcon icon="times-circle" className="validated-failed" />
+                                                        
+                                                            default:
+                                                                return;
+                                                        }
+                                                    }
+                                                )()}
+                                                
                                             </span>
                                         </div>
                                         <span className="campo-obligatorio">{`La contraseña debe tener de  4 a 30 caracteres.`}</span>
@@ -149,7 +155,7 @@ export const CreateAccount = () => {
                                     <div id="group__rPassword2" className="password-validator">
                                         <div>
                                             <input 
-                                                type={ showPassword ? 'text' : 'password' } 
+                                                type="password"
                                                 placeholder="Repetir contraseña" 
                                                 name="rPassword2"
                                                 id="rPassword2"
@@ -159,16 +165,27 @@ export const CreateAccount = () => {
                                                 onKeyUp={handleValidation}
                                                 onBlur={handleValidation}
                                             />
-                                            <span className="view-password" onClick={handleViewPassword}>
-                                                {
-                                                    showPassword ?
-                                                    (<FontAwesomeIcon icon="eye-slash" title="Ocultar" />)
-                                                    :
-                                                    (<FontAwesomeIcon icon="eye" title="Ver" />)
-                                                }
+                                            <span className="status-validation">
+                                                {(
+                                                    () => {
+                                                        switch (vPassword) {
+                                                            case 0:
+                                                                return;
+
+                                                            case true:
+                                                                return <FontAwesomeIcon icon="check-circle" className="validated-success" />
+
+                                                            case false:
+                                                                return <FontAwesomeIcon icon="times-circle" className="validated-failed" />
+                                                        
+                                                            default:
+                                                                return;
+                                                        }
+                                                    }
+                                                )()}
                                             </span>
                                         </div>
-                                        <span className="campo-obligatorio">{`Ambas contraseñas deben ser iguales.`}</span>
+                                        <span className={`campo-obligatorio ${ !vPassword && 'campo-obligatorio-error'}`}>{`Ambas contraseñas deben ser iguales.`}</span>
                                     </div>
                                 </div>
                             </div>
