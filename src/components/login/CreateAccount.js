@@ -1,14 +1,16 @@
-import React, { useContext } from 'react'
+import React, { useCallback, useContext, useEffect } from 'react'
 import { userContext } from '../films/userContext';
 /** Validaciones **/
 import { validaciones } from './validaciones';
+/** Hooks **/
+import { useForm } from '../../hooks/useForm';
 
 /** FontAwesome **/
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 
 export const CreateAccount = () => {
-
+    
     /** Estados de usurio UseContenxt **/
     const {userState, setUserState} = useContext(userContext);
     const {singIn} = userState;
@@ -20,11 +22,16 @@ export const CreateAccount = () => {
         rLastName : 0,
         rEmail : 0,
         rPassword : 0,
-        rPassword2 : 0,
         vPassword : 0
     });
 
-    const { rName, rLastName, rEmail, rPassword, rPassword2, vPassword } = inputState;
+    const { 
+            rName : sName, 
+            rLastName : sLastName, 
+            rEmail : sEmail, 
+            rPassword : sPassword, 
+            vPassword 
+        } = inputState;
 
     /** Cerrar Modal delegando eventos**/
     const handleClosed = (e) => {
@@ -46,17 +53,47 @@ export const CreateAccount = () => {
     /** Validación de formulario **/
     const handleValidation = (e) => {
         validaciones(e.target,setInputState);
+        habilitarBoton();
     }
 
 
     /** Registrar usuario **/
+
+    const [ formRegisterValues, handleRegisterInputChange ] = useForm({
+        rName : '', 
+        rLastName : '', 
+        rEmail : '', 
+        rPassword : '', 
+        rPassword2 : '', 
+    });
+
+    const { rName, rLastName, rEmail, rPassword, rPassword2} = formRegisterValues;
+    
     const handleRegister = (e) => {
         e.preventDefault();
-        if (rName && rLastName && rEmail && rPassword && rPassword2) {
-            
+        if (sName && sLastName && sEmail && sPassword && vPassword) {
+            console.log('Datos correctos');
+        }else{
+            console.log('Datos incorrectos');
         }
     }
 
+    
+    /** Habilitar botón **/
+    const habilitarBoton = useCallback(() => {
+        if(sName && sLastName && sEmail && sPassword && vPassword){
+            
+            return document.getElementById('btn-registrar').classList.add('btn-registrar-active');
+            
+        }else{
+            
+            return document.getElementById('btn-registrar').classList.remove('btn-registrar-active'); 
+        }
+    },[sName, sLastName, sEmail, sPassword, vPassword]);
+
+    useEffect(() => {
+        habilitarBoton();
+    }, [sName, sLastName, sEmail, sPassword, vPassword,habilitarBoton]);
 
     return (
         <div className="createAccount__container createAccount-active" onClick={handleClosed} >
@@ -130,7 +167,7 @@ export const CreateAccount = () => {
                                             <span className="status-validation">
                                                 {(
                                                     () => {
-                                                        switch (vPassword) {
+                                                        switch (sPassword) {
                                                             case 0:
                                                                 return;
 
@@ -185,12 +222,26 @@ export const CreateAccount = () => {
                                                 )()}
                                             </span>
                                         </div>
-                                        <span className={`campo-obligatorio ${ !vPassword && 'campo-obligatorio-error'}`}>{`Ambas contraseñas deben ser iguales.`}</span>
+                                        {(
+                                            () => {
+                                                switch (vPassword) {
+                                                    case 0:
+                                                        return;
+
+                                                    case false:
+                                                        return <span className={`campo-obligatorio ${ !vPassword && 'campo-obligatorio-error'}`}>{`Ambas contraseñas deben ser iguales.`}</span>
+
+                                                    default:
+                                                        return;
+                                                }
+                                            }
+                                        )()}
+                                    
                                     </div>
                                 </div>
                             </div>
-                            <div className="btn-registrar">
-                                <button>
+                            <div id="btn-registrar" className='btn-registrar' >
+                                <button disabled={false}>
                                     {`REGISTRAR`}
                                 </button>
                             </div>

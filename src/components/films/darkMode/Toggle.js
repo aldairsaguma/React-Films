@@ -8,9 +8,34 @@ import { Design } from './Design';
 
 const Toggle = () => {
 	
+	const themeSelected = JSON.parse(localStorage.getItem('dark'));
+
 	/** Use content for dark mode **/
 	const {userState, setUserState} = useContext(userContext);
 	const {darkMode} = userState;
+	
+	const [ focus, setHasFocus ] = useState({
+		hasFocus : false
+	});
+
+	const { hasFocus } = focus;
+
+	/** Comprobamos el estado inicial de dark mode **/
+	useEffect(() => {
+		/** Comprobar si está en verdadero o falso**/
+		if(themeSelected){
+			setUserState( state => ({...state, darkMode : true}));
+		}else{
+			setUserState( state => ({...state, darkMode : false}));
+		}
+	}, [setUserState,themeSelected]);
+
+
+	/** Se ejecuta al cambiar estado de hasFocus **/
+	useEffect(() => {
+		if(hasFocus) document.querySelector('.icon-mode-thumb').classList.add('icon-mode-thumb-focus');
+	}, [hasFocus]);
+
 
 	// useThemeDetector - Detectamos el tema del sistema - Hacemos un condicional en la que si el tema es dark creamos en el localStorage
 	// creamos la Key -> "Dark" y le asignamos 'true' 
@@ -28,36 +53,6 @@ const Toggle = () => {
 		themeSO();
 	}, [themeDefault])
 
-
-	const themeSelected = JSON.parse(localStorage.getItem('dark'));
-
-	const [ focus, setHasFocus ] = useState({
-		hasFocus : false
-    });
-	
-	const { hasFocus } = focus;
-
-	/** Comprobamos el estado inicial de dark mode **/
-	useEffect(() => {
-		/** Comprobar si esta en verdadero o falso**/
-		if(themeSelected){
-			setUserState({
-				...userState,
-				darkMode : true
-			});
-		}else{
-			setUserState({
-				...userState,
-				darkMode : false
-			});
-		}
-	}, [setUserState,themeSelected])
-
-
-	/** Se ejecuta al cambiar estado de hasFocus **/
-	useEffect(() => {
-		if(hasFocus) document.querySelector('.icon-mode-thumb').classList.add('icon-mode-thumb-focus');
-	}, [hasFocus]);
 
 	const handleDarkMode = () => {
 		
@@ -93,8 +88,8 @@ const Toggle = () => {
 			document.querySelector('.dark-mode').classList.remove('dark-mode-active');
 		}
 
-	};	
-
+	};
+	// console.log('Toggle');
 	return (
 		<div className="dark-mode-content">
 			<div className="title caja-1">{`Light`}</div>
@@ -110,7 +105,7 @@ const Toggle = () => {
 					<Design handleDarkMode={handleDarkMode} themeSelected={themeSelected} />
 
 				</OutsideClickHandler>
-			<div className="title caja-2">Dark</div>
+			<div className="title caja-2">{`Dark`}</div>
 								
 		</div>
 	);

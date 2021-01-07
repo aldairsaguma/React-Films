@@ -29,7 +29,7 @@ const Dropdown = () => {
         });
         
     }
-    
+    // console.log('Dropdown');
     return (
         <li className="dropdown__user-dropdown">
             {/* OutsideClickHandler -> actua cómo un div */}
