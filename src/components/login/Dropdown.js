@@ -1,62 +1,44 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Login } from './Login';
-import { Account } from './Account';
-/** Font Awesome **/
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+// import { Account } from './Account';
+import ButtonDropDown  from './ButtonDropDown';
 
 /** react-outside-click-handler **/
 import OutsideClickHandler from 'react-outside-click-handler';
 
 const Dropdown = () => {
 
-    const [{active}, setLogin] = useState({
-        active: false
-    });
+    const [dropDown, setDropDown] = useState(false);
     
     useEffect(() => {
-        if(active){
+        if(dropDown){
             document.querySelector('.auth__dropdown-box').classList.add('auth__dropdown-box-active');
         }else{
             document.querySelector('.auth__dropdown-box').classList.remove('auth__dropdown-box-active');
         }
-    }, [active]);
+    }, [dropDown]);
 
 
-    const handleDropdown = () => {
+    const handleDropdown = useCallback(() => {
 
-        setLogin({
-            active: !active
-        });
+        setDropDown(active => !active);
         
-    }
-    // console.log('Dropdown');
+    },[setDropDown]);
+
     return (
         <li className="dropdown__user-dropdown">
             {/* OutsideClickHandler -> actua cómo un div */}
             <OutsideClickHandler 
                 onOutsideClick={ () => {
-                    setLogin({
-                        active: false
-                    });
+                    setDropDown(false);
                 }} 
-                disabled={!active}
+                disabled={!dropDown}
             >
-                <button
-                    id="btn-login" 
-                    className="btn-login"
-                    onClick={handleDropdown}
-                    >
-                    <FontAwesomeIcon icon="user"/>
-                    { ' ' }
-                    <span className="icon-login">
-                        {`Login`}
-                        {/* {`Perfil`} */}
-                    </span>
-                </button>
+                <ButtonDropDown handleDropdown={handleDropdown} />
                 <div className="auth__dropdown-box">
                     {
-                        active && <Login /> 
-                        // active && <Account />
+                        dropDown && <Login /> 
+                        // dropDown && <Account />
                     }         
                 </div>
             </OutsideClickHandler>
@@ -64,4 +46,4 @@ const Dropdown = () => {
     )
 };
 
-export default React.memo(Dropdown);
+export default Dropdown;

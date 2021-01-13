@@ -14,8 +14,8 @@ export const Login = () => {
         setUserState({
             ...userState,
             singIn : !singIn
-        })
-    }
+        });
+    };
     
     return (
         <div 

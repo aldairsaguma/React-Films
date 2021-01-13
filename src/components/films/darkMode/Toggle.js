@@ -89,7 +89,7 @@ const Toggle = () => {
 		}
 
 	};
-	// console.log('Toggle');
+	
 	return (
 		<div className="dark-mode-content">
 			<div className="title caja-1">{`Light`}</div>
@@ -111,5 +111,5 @@ const Toggle = () => {
 	);
 };
 
-export default React.memo(Toggle);
+export default Toggle;
 
